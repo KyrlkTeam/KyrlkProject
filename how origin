@@ -1,0 +1,25 @@
+[33mcommit 75802ec8488908c7addecac4948136ca44cc9efd[m
+Author: DNikityuk <dmtrk_nikityuk@mail.ru>
+Date:   Fri Feb 19 19:28:17 2016 +0200
+
+    Reload
+
+[33mcommit 1d5c0e58516c34715dde48c5188a3c4f9fb22150[m
+Author: DNikityuk <dmtrk_nikityuk@mail.ru>
+Date:   Fri Feb 19 16:53:39 2016 +0200
+
+    Revert "Create project"
+    
+    This reverts commit c349d1c7098b4878e3204036f5928efbe100863c.
+
+[33mcommit c349d1c7098b4878e3204036f5928efbe100863c[m
+Author: DNikityuk <dmtrk_nikityuk@mail.ru>
+Date:   Fri Feb 19 15:46:18 2016 +0200
+
+    Create project
+
+[33mcommit 3ca3227c85be0f3ffe3e83b50919cb041fe763da[m
+Author: DNikityuk <dmtrk_nikityuk@mail.ru>
+Date:   Fri Feb 19 15:36:13 2016 +0200
+
+    Initial commit
