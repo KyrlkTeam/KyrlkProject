@@ -23,7 +23,19 @@ public class CharacterController : MonoBehaviour
     private float groundRadius = 0.2f;
     //ссылка на слой, представляющий землю
     public LayerMask whatIsGround;
-    
+
+    //находится ли персонаж на земле или в прыжке?
+    public bool isFood = false;
+    //ссылка на компонент Transform объекта
+    //для определения соприкосновения с землей
+    public Transform foodCheck;
+    //радиус определения соприкосновения с землей
+    private float foodRadius = 0.5f;
+    //ссылка на слой, представляющий землю
+    public LayerMask whatIsFood;
+
+   SemkaController semkControl;
+
     /// <summary>
     /// Начальная инициализация
     /// </summary>
@@ -47,8 +59,12 @@ public class CharacterController : MonoBehaviour
         //устанавливаем в аниматоре значение скорости взлета/падения
         anim.SetFloat("vSpeed", myRigidbody.velocity.y);
         //если персонаж в прыжке - выход из метода, чтобы не выполнялись действия, связанные с бегом
-        if (!isGrounded)
-            return;
+        //if (!isGrounded)
+        //    return;
+        
+        //определяем, еда ли возле персонажа
+        isFood = Physics2D.OverlapCircle(foodCheck.position, foodRadius, whatIsFood);
+
 
         //используем Input.GetAxis для оси Х. метод возвращает значение оси в пределах от -1 до 1.
         //при стандартных настройках проекта 
@@ -83,8 +99,24 @@ public class CharacterController : MonoBehaviour
             //прикладываем силу вверх, чтобы персонаж подпрыгнул
             myRigidbody.AddForce(new Vector2(0, 900));
         }
+
     }
 
+    void OnCollisionEnter2D(Collision2D colis)
+    {
+        if (colis.gameObject.name == "Janitor (1)")
+            ;// Destroy(gameObject);
+
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        var SemkaController = col.gameObject.GetComponent<SemkaController>();
+        if (col.gameObject.tag == "Food" && SemkaController.onGround)
+        {
+            Destroy(col.gameObject);
+        }
+    }
     /// <summary>
     /// Метод для смены направления движения персонажа и его зеркального отражения
     /// </summary>
